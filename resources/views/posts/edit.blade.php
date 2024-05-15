@@ -3,7 +3,7 @@
         Post Edit Page
     </x-slot>
 
-    <form action="{{ route('posts.update', $post->id) }}" method="POST"
+    <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data"
         class="max-w-screen-md mx-auto bg-slate-200 p-5 my-10 flex flex-col gap-3">
         @csrf
         @method('PUT')
@@ -18,6 +18,12 @@
         <textarea name="content" id="content" cols="30" rows="5" placeholder="Your Message"
             class="w-full p-2 text-sm">{{ old('content', $post->content) }}</textarea>
         @error('content')
+            <span class="text-red-500 text-sm font-semibold">{{ $message }}</span>
+        @enderror
+
+        <label for="thumbnail" class="font-semibold">Upload</label>
+        <input type="file" id="thumbnail" name="thumbnail">
+        @error('thumbnail')
             <span class="text-red-500 text-sm font-semibold">{{ $message }}</span>
         @enderror
 

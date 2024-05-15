@@ -32,7 +32,7 @@
                 @endforelse
             </tbody>
         </table> --}}
-        <table class="w-full divide-y divide-black border border-black">
+        <table class="w-full divide-y divide-black border border-black text-sm">
             <thead class="bg-slate-200">
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
