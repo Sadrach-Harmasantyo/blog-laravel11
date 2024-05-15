@@ -7,6 +7,8 @@
         <h1 class="text-2xl font-bold mb-5">{{ $post->title }}</h1>
         <p class="mb-5">{{ $post->content }}</p>
 
+        <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}">
+
         @can('update', $post)
             <a href="{{ route('posts.edit', $post->id) }}" class="bg-blue-500 text-slate-50 p-2 hover:bg-opacity-90">Edit</a>
         @endcan

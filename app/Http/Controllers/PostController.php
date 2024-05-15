@@ -69,6 +69,7 @@ class PostController extends Controller
     {
         // $post = Post::findOrFail($id);
         Post::findOrFail($post->id);
+        // dd($post->thumbnail);
         return view('posts.show',compact('post'));
     }
 
@@ -82,7 +83,7 @@ class PostController extends Controller
         //     abort(403);
         // }
 
-        // Gate::authorize('update', $post);
+        Gate::authorize('update', $post);
        return view('posts.edit',compact('post'));
     }
 
