@@ -2,6 +2,10 @@
     <div class="flex gap-10 container mx-auto justify-end">
         <x-navbar.nav-link2 href="/posts" :active="request()->is('posts')">Post</x-navbar.nav-link2>
 
+        @if (Auth::check() && Auth::user()->is_admin)
+            <x-navbar.nav-link2 href="/admin" :active="request()->is('admin')">Admin</x-navbar.nav-link2>
+        @endif
+
         @auth
             <x-navbar.nav-link2 href="/posts/create" :active="request()->is('posts/create')">Create Post</x-navbar.nav-link2>
 

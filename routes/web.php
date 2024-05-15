@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\PostController;
@@ -78,10 +79,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/post/{post}', [PostController::class,'destroy'])->name('posts.destroy'); 
     Route::post('/logout', [LoginUserController::class, 'logout'])->name('logout');
 
-    Route::get('/admin', fn()=> 'You are logged as a Admin')->can('is-admin')->name('admin');
+    // Route::get('/admin', fn()=> 'You are logged as a Admin')->can('is-admin')->name('admin');
+    Route::get('/admin', [AdminController::class, 'index'])->middleware('is-admin')->name('admin');
 });
 Route::get('/posts', [PostController::class,'index'])->name('posts.index');
-Route::get('/posts/{post}', [PostController::class,'show'])->middleware('can-view-post')->name('posts.show');
+Route::get('/posts/{post}', [PostController::class,'show'])->name('posts.show');
+// Route::get('/posts/{post}', [PostController::class,'show'])->middleware('can-view-post')->name('posts.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterUserController::class,'register'])->name('register');
