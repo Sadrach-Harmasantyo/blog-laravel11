@@ -90,3 +90,4 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [LoginUserController::class, 'store'])->name('login.store');
 });
 
+//edit routes
