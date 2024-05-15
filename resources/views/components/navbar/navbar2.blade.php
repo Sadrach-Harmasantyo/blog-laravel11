@@ -15,7 +15,7 @@
                     onclick="event.preventDefault(); this.closest('form').submit();">Logout</x-navbar.nav-link2>
             </form>
 
-            <p>Hello, {{ auth()->user()->name }}</p>
+            <p>Hello, {{ auth()->user()->email }}</p>
         @endauth
 
         @guest

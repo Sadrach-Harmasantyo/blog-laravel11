@@ -50,8 +50,16 @@
                         <td class="px-6 py-4 whitespace-nowrap">{{ $post->title }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $post->created_at }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            {{-- <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a> --}}
+                            <a href="{{ route('admin.posts.edit', $post->id) }}"
+                                class="bg-blue-500 text-slate-50 p-2 hover:bg-opacity-90">Edit</a>
+                            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="bg-red-500 text-slate-50 p-2 hover:bg-opacity-90">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @empty
